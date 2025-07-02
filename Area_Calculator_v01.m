@@ -16,7 +16,7 @@ m = 0.5;  % meters
 showOnGeoMap = true;  % Set to false to disable map display
 
 % File name
-filename = 'A02_Smoothed GPS data - test.xlsx';
+filename = 'Smoothed GPS data - test.xlsx';
 
 % Sheet names
 sheets = {'E01', 'E02', 'E03', 'E04', 'E05'}; % Test
