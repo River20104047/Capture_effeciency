@@ -2,7 +2,7 @@ clc, clear, close all
 
 % This script compares two statistical models (Normal residuals and Negative Binomial)
 % to fit a nonlinear function of the form:
-%     c_i = D0 * sum_j a_ij * (1 - e)^(j-1)
+%     c_i = e*D0 * sum_j a_ij * (1 - e)^(j-1)
 % It estimates parameters D0 and e, computes diagnostics (AIC, BIC, R^2, RMSE),
 % and generates 95% prediction intervals using Monte Carlo simulation.
 
@@ -39,7 +39,7 @@ J = size(A, 2);
 % This function defines the model prediction given parameters:
 % params(1) = D0 (scaling constant), params(2) = e (decay factor).
 % It computes the sum over columns of matrix A weighted by (1 - e) powers.
-model_fun = @(params, A) params(1) * sum(A .* (1 - params(2)).^(0:J-1), 2);
+model_fun = @(params, A) (params(1) * params(2)) * sum(A .* (1 - params(2)).^(0:J-1), 2);
 
 %% === Model I: Normal residuals ===
 % Assumes residuals follow a normal distribution.
